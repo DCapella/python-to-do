@@ -19,8 +19,8 @@ def show_list(to_do_list):
     print("\nHere's your list:")
     print("-"*10)
 
-    for number in range(len(to_do_list)):
-        print(f"%s. %s" % (str(number + 1), to_do_list[number]))
+    for index, item in enumerate(to_do_list, start = 1):
+        print(f"%s. %s" % (index, item))
 
     print("-"*10)
 
@@ -32,7 +32,8 @@ def remove_from_list(to_do_list):
     except ValueError:
         print("'{}' was not in your list.".format(temp_remove))
         input("ENTER/RETURN to continue")
-        remove_from_list(to_do_list)
+        if len(to_do_list) > 0:
+            remove_from_list(to_do_list)
     show_list(to_do_list)
 
 def add_to_list(to_do_list, new_item):
